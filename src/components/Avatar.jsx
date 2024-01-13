@@ -8,7 +8,7 @@ import * as THREE from "three"; // Import THREE
 export function Avatar(props) {
 
 	const { animation } = props;
-
+	
 
 	const group = useRef();
 	const { nodes, materials } = useGLTF("models/657a0cf4012bb533ff10fefd.glb");
@@ -24,7 +24,6 @@ export function Avatar(props) {
 
 
 	const { actions } = useAnimations([typingAnimation[0], fallingAnimation[0], standingAnimation[0]], group);
-
 
 
 	useEffect(() => {

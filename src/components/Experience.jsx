@@ -1,4 +1,4 @@
-import { Float, MeshDistortMaterial, MeshWobbleMaterial, OrbitControls, useScroll } from "@react-three/drei";
+import { Float, MeshDistortMaterial, MeshWobbleMaterial, useScroll } from "@react-three/drei";
 import { Office } from "./Office"
 import { motion } from "framer-motion-3d";
 import { Avatar } from "./Avatar";
@@ -8,6 +8,8 @@ import { useEffect, useRef, useState } from "react";
 import { framerMotionConfig } from "../config"
 import * as THREE from 'three';
 import { Projects} from "./Projects";
+import { Background } from "./Background";
+
 
 export const Experience = (props) => {
   const {  menuOpened } = props;
@@ -68,6 +70,7 @@ export const Experience = (props) => {
 
   return (
     <>
+      <Background/>
       <motion.group
         position={[
           1.9072935059634513,

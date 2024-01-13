@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { Experience } from "./components/Experience";
-import { OrbitControls, Scroll, ScrollControls } from "@react-three/drei";
+import { Scroll, ScrollControls } from "@react-three/drei";
 import { Interface } from "./components/Interface";
 import { useEffect, useState } from "react";
 import { ScrollManager } from "./components/ScrollManager";
@@ -34,7 +34,7 @@ function App() {
               <Experience section={section}  menuOpened={menuOpened}/>
             </Scroll>
             <Scroll html>
-              <Interface />
+              <Interface setSection={setSection}/>
             </Scroll>
             
           </ScrollControls>
