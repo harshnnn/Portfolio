@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { ScrollManager } from "./components/ScrollManager";
 import { Menu } from "./components/Menu";
 import { MotionConfig } from "framer-motion";
-import { Leva } from "leva";
 import { framerMotionConfig } from "./config";
 import { Cursor } from "./components/Cursor";
 
@@ -45,7 +44,6 @@ function App() {
         <Cursor />
 
       </MotionConfig>
-      <Leva hidden/>
       
     </>
   );
