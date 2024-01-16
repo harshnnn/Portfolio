@@ -14,12 +14,15 @@
     "@types/three": "0.152.1",
     "framer-motion": "^10.17.9",
     "framer-motion-3d": "^10.17.9",
+    "glsl-noise": "^0.0.0",
+    "glslify": "^7.1.1",
     "gsap": "^3.12.4",
     "jotai": "^2.6.1",
     "leva": "^0.9.35",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "three": "0.153.0"
+    "three": "0.153.0",
+    "vite-plugin-glsl": "^1.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",

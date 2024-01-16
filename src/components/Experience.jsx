@@ -2,21 +2,21 @@ import { Float, MeshDistortMaterial, MeshWobbleMaterial, useScroll } from "@reac
 import { Office } from "./Office"
 import { motion } from "framer-motion-3d";
 import { Avatar } from "./Avatar";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useFrame, useThree , extend, useLoader} from "@react-three/fiber";
 import { animate, useMotionValue } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { framerMotionConfig } from "../config"
 import * as THREE from 'three';
-import { Projects} from "./Projects";
+import { Projects } from "./Projects";
 import { Background } from "./Background";
 
 
 export const Experience = (props) => {
-  const {  menuOpened } = props;
+  const { menuOpened } = props;
   const { viewport } = useThree();
 
   const data = useScroll();
-  const [section, setSection]= useState(0);
+  const [section, setSection] = useState(0);
 
   const cameraPositionX = useMotionValue();
   const cameraLookAtX = useMotionValue();
@@ -31,24 +31,45 @@ export const Experience = (props) => {
   }, [menuOpened]);
 
   const characterContainerAboutRef = useRef();
-
   const [characterAnimation, setCharacterAnimation] = useState("Typing");
-  useEffect(()=>{
+
+  useEffect(() => {
+    // Set initial animation to "Falling"
     setCharacterAnimation("Falling");
-    setTimeout(()=>{
-      setCharacterAnimation(section === 0 ? "Typing" :"Standing")
-    },1000)
-  },[section]);
+
+    // After 1 second, check the section and update animation accordingly
+    const timeoutId = setTimeout(() => {
+      if (section === 0) {
+        setCharacterAnimation("Typing");
+      } else if (section === 1 || section === 2) {
+        setCharacterAnimation("Standing");
+      } else if (section === 3) {
+        setCharacterAnimation("Waving");
+
+        // After 2 seconds, change animation to "ArmsCrossed"
+        setTimeout(() => {
+          setCharacterAnimation("ArmsCrossed");
+        }, 2000);
+
+      }
+    }, 1000);
+
+    // Cleanup the timeout to avoid memory leaks
+    return () => clearTimeout(timeoutId);
+
+  }, [section]);
 
   useFrame((state) => {
 
     let curSection = Math.floor(data.scroll.current * data.pages);
 
-    if(curSection > 3){
-      curSection =3;
+    if (curSection > 3) {
+      curSection = 3;
     }
 
-    if(!curSection !== section){
+
+
+    if (!curSection !== section) {
       setSection(curSection);
     }
 
@@ -64,13 +85,12 @@ export const Experience = (props) => {
     // const euler = new THREE.Euler();
     // euler.setFromQuaternion(quaternion, "XYZ");
     // console.log([euler.x, euler.y, euler.z]);
+
   })
-
-
 
   return (
     <>
-      <Background/>
+      <Background />
       <motion.group
         position={[
           1.9072935059634513,
@@ -81,7 +101,7 @@ export const Experience = (props) => {
         rotation={[-3.141592653589793, 1.2053981633974482, 3.141592653589793]}
         animate={"" + section}
         transition={{
-          duration:1,
+          duration: 1,
         }}
         variants={{
           0: {
@@ -106,18 +126,19 @@ export const Experience = (props) => {
             rotateY: Math.PI / 2,
             rotateZ: 0,
           },
-          3:{
-            y:-viewport.height*3+1,
-            x:0.3,
-            z:8.5,
-            rotateX:0,
-            rotateY: -Math.PI /4,
-            rotateZ:0,
+          3: {
+            y: -viewport.height * 3 + 1,
+            x: 0.4,
+            z: 8.5,
+            rotateX: 0,
+            rotateY: -Math.PI / 5,
+            rotateZ: 0,
           }
         }}
       >
         <Avatar animation={characterAnimation} />
       </motion.group>
+
 
       <ambientLight intensity={1} />
       <motion.group
@@ -140,6 +161,7 @@ export const Experience = (props) => {
         </group>
 
       </motion.group>
+
       {/* Skills */}
       <motion.group position={[0, -1.5, -10]}
         animate={

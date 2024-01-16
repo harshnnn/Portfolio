@@ -16,14 +16,19 @@ export function Avatar(props) {
 	const { animations: typingAnimation } = useFBX("animations/TypingBug.fbx")
 	const { animations: fallingAnimation } = useFBX("animations/Falling Idle.fbx")
 	const { animations: standingAnimation } = useFBX("animations/Standing Idle.fbx")
+	const {animations: wavingAnimation} = useFBX("animations/Waving.fbx")
+	const {animations: armsCrossedAnimation} = useFBX("animations/Arms Crossed.fbx")
+	const {animations: harshRanjanImage} = useFBX("animations/HRP.fbx")
 
 
 	typingAnimation[0].name = "Typing";
 	fallingAnimation[0].name = "Falling";
 	standingAnimation[0].name = "Standing";
+	wavingAnimation[0].name = "Waving";
+	armsCrossedAnimation[0].name = "ArmsCrossed"
 
 
-	const { actions } = useAnimations([typingAnimation[0], fallingAnimation[0], standingAnimation[0]], group);
+	const { actions } = useAnimations([typingAnimation[0], fallingAnimation[0], standingAnimation[0],wavingAnimation[0], armsCrossedAnimation[0]], group);
 
 
 	useEffect(() => {

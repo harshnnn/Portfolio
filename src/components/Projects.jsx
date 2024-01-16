@@ -5,6 +5,8 @@ import { motion } from "framer-motion-3d"
 import { atom, useAtom } from "jotai";
 import { useEffect, useRef } from "react";
 
+
+
 export const projects = [
     {
         title: "Gym-Website",
@@ -97,7 +99,6 @@ export const Projects = () => {
                         rotateY: currentProject === index ? 0 : -0.1*Math.PI /3,
                     }}
                 >
-                    
                     <Project project={project} heighlighted={index === currentProject} />
                 </motion.group>
             ))}

@@ -113,8 +113,8 @@ const SkillsSection = () => {
     return (
         <Section>
             <motion.div whileInView={"visible"}>
-                <h2 className="text-5xl font-bold text-white">Skills</h2>
-                <div className="mt-8 space-y-4">
+                <h2 className="text-5xl font-bold text-white pl-24">Skills</h2>
+                <div className="mt-8 space-y-4 pl-24">
                     {Skills.map((skill, index) => (
                         <div className="w-64" key={index}>
                             <motion.h3 className="text-xl font-bold text-gray-100"
@@ -176,7 +176,7 @@ const ProjectsSection = () => {
 
     return (
         <Section>
-            <div className="flex w-full h-full gap-8 items-center justify-center">
+            <div className="flex w-full h-full gap-8 items-center justify-center ">
                 <button
                     className="hover:text-indigo-600 transition-colors"
                     onClick={previousProject}
@@ -198,8 +198,9 @@ const ProjectsSection = () => {
 const Contact = () => {
     return (
         <Section>
+            <div className="pl-24">
             <h2 className="text-5xl font-bold">Contact me</h2>
-            <div className="mt-8 p-8 rounded-md bg-white text-gray-900 block mb-1">
+            <div className="mt-8 p-8 rounded-md bg-white text-gray-900 block mb-1 ">
                 <form>
                     <label for="name" className="font-medium text-gray-900 block mb-1">
                         Name
@@ -233,6 +234,7 @@ const Contact = () => {
                         Submit
                     </button>
                 </form>
+            </div>
             </div>
         </Section>
     )
